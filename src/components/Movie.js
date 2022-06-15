@@ -8,6 +8,11 @@ const Movie = (props) => {
     const { push } = useHistory();
 
     const movie = props.movies.find(movie=>movie.id===Number(id));
+
+    const deleteMovie = (movieId) => {
+        props.deleteMovie(movieId)
+        push('/movies')
+    }
     
     return(<div className="modal-page col">
         <div className="modal-dialog">
@@ -39,7 +44,7 @@ const Movie = (props) => {
                         
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={props.deleteMovie}/></span>
+                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={deleteMovie}/></span>
                         </section>
                     </div>
                 </div>
