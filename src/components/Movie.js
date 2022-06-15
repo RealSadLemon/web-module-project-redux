@@ -48,10 +48,10 @@ const Movie = (props) => {
     </div>);
 }
 
-const saveStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         movies: state.movies
     }
 }
 
-export default connect(saveStateToProps, { deleteMovie })(Movie);
+export default connect(mapStateToProps, { deleteMovie })(Movie);

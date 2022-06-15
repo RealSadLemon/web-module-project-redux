@@ -29,10 +29,10 @@ const MovieList = (props)=> {
     );
 }
 
-const saveStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         movies: state.movies
     }
 }
 
-export default connect(saveStateToProps, {})(MovieList);
+export default connect(mapStateToProps, {})(MovieList);
