@@ -31,8 +31,7 @@ const MovieList = (props)=> {
 
 const saveStateToProps = (state) => {
     return {
-        movies: state.movies,
-        appTitle: state.appTitle
+        movies: state.movies
     }
 }
 
