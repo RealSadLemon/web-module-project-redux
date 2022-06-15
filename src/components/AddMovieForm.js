@@ -13,8 +13,10 @@ const AddMovieForm = (props) => {
         genre: "",
         metascore: 0,
         description:"",
-        id: new Date().getTime()
+        id: (props.movies[props.movies.length-1].id + 1)
     });
+
+    console.log(movie);
 
     const handleChange = (e) => {
         setMovie({
@@ -72,7 +74,9 @@ const AddMovieForm = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        movies: state.movieReducer.movies
+    }
 }
 
 export default connect(mapStateToProps, {addMovie})(AddMovieForm);
