@@ -12,8 +12,11 @@ const AddMovieForm = (props) => {
         director: "",
         genre: "",
         metascore: 0,
-        description:""
+        description:"",
+        id: (props.movies[props.movies.length-1].id + 1)
     });
+
+    console.log(movie);
 
     const handleChange = (e) => {
         setMovie({
@@ -23,6 +26,9 @@ const AddMovieForm = (props) => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+        props.addMovie(movie);
+        push('/movies/')
     }
 
     const { title, director, genre, metascore, description } = movie;
@@ -30,7 +36,7 @@ const AddMovieForm = (props) => {
         <div className="modal-dialog">
             <div className="modal-content">
                 <form onSubmit={handleSubmit}>
-                    <div className="modal-header">						
+                    <div className="modal-header">
                         <h4 className="modal-title">Add Movie</h4>
                     </div>
 
@@ -67,4 +73,10 @@ const AddMovieForm = (props) => {
     </div>);
 }
 
-export default AddMovieForm;
+const mapStateToProps = (state) => {
+    return {
+        movies: state.movieReducer.movies
+    }
+}
+
+export default connect(mapStateToProps, {addMovie})(AddMovieForm);
